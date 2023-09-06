@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { text } from 'stream/consumers'
+import Memo from './memo/Memo'
 
 export default function Home() {
   let title = 'Iyoの勉強ページ'
@@ -28,16 +29,8 @@ export default function Home() {
           <button type="submit" className="nes-btn is-primary">ついか</button>
         </form>
         
-        
-        {/*追加されたタスク表示用インプット Memoコンポーネントを作ろう！！*/}
         <h2 className="subTitle">{subTitle}</h2>
-        <div className='nes-container '>
-          {/*  ここにTODOリストを表示 */}
-          {/*  左側にチェックボックス、右側にタスク名表示かなー！ */}
-          <label>今は何もなしー</label>
-        </div>
-
-        
+        <Memo />
         {/* アイコン並べてかわいくした */}
         <section className="icon-list">
           <i>△△△</i>
