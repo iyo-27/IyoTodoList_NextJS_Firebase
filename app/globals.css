@@ -26,11 +26,9 @@
   }
 }
 
-body { 
-}
-
 section {
   margin: 2rem 2rem;
+  text-align: center;
 }
 
 main {
