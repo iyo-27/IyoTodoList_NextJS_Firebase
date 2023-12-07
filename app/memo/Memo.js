@@ -6,6 +6,8 @@ import getAllMyData from "../lib/Server";
 // 登録されたTODOを表示する関数コンポーネント
 export default function Memo(){
     console.log('Memoまで来てる')
+    
+    const idPrefix = 'row_' // タスク詳細のidプレフィックス
     const [allmydata, setAllMyData] = useState([])
 
     // Firebaseから未完了データ取得
@@ -24,7 +26,7 @@ export default function Memo(){
     if(allmydata[0] != 'err'){
         allmydata.forEach((doc) => {
             console.log('getAllMyData結果：' + doc.id + ' => ' + doc.get('task'));
-            taskDetail.push(<TaskDetail key={doc.id} message={doc.get('task')} deadline={doc.get('deadline')}/>)
+            taskDetail.push(<TaskDetail id={idPrefix + doc.id} message={doc.get('task')} deadline={doc.get('deadline')}/>)
         })
     }
 
