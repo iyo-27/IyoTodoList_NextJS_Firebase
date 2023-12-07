@@ -1,13 +1,13 @@
 import Head from 'next/head'
 import { text } from 'stream/consumers'
 import Memo from './memo/Memo'
+import AddForm from './memo/AddForm'
 
 export default function Home() {
   let title = 'Iyoの勉強ページ'
   let subTitle = 'TODOリスト'
 
   // TODO:後でモードを追加して、ボタンの名前を変える
-  let buttonName = 'ついか'
   console.log('Page通過')
 
   return ( 
@@ -29,10 +29,7 @@ export default function Home() {
           <i className="nes-icon is-large star"></i>
         </section>
         {/*このインプットがタスク追加用インプット */}
-        <form>
-          <input type='text' id='addMessage' className='nes-input'/>
-          <button type="submit" className="nes-btn is-primary">{buttonName}</button>
-        </form>
+        <AddForm />
         
         <h2 className="subTitle">{subTitle}</h2>
         <Memo />
