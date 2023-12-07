@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import TaskDetail from "./TaskDetail.js";
-import getAllMyData from "../lib/Server";
+import {getAllMyData} from "../lib/Server";
 
 // 登録されたTODOを表示する関数コンポーネント
 export default function Memo(){
