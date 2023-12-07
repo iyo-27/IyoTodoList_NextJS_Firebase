@@ -13,8 +13,8 @@ function TaskDetail(props){
     console.log('TaskDetailまで来てる id：' + props.id + ', message：' + props.message + ', deadline：' + d.getDay())
 
     // 期限を過ぎている場合、赤色表示
-    let deadLineStyle = 'nes-text '
-    if (d.getTime() < (new Date()).getTime()) {
+    let deadLineStyle = 'nes-text' + ' '
+    if (d.getTime() > (new Date()).getTime()) {
         deadLineStyle += 'is-primary'
     } else {
         deadLineStyle += 'is-error'
