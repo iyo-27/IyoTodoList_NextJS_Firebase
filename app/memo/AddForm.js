@@ -1,5 +1,6 @@
 import React, {} from 'react';
 
+// 新規タスクの登録、追加フォームの描画する関数コンポーネント
 function AddForm(props){
 
     let buttonName = 'ついか'

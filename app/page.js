@@ -4,7 +4,7 @@ import Memo from './memo/Memo'
 import AddForm from './memo/AddForm'
 
 export default function Home() {
-  let title = 'Iyoの勉強ページ'
+  let title = 'Iyoのかわいいタスク管理'
   let subTitle = 'TODOリスト'
 
   // TODO:後でモードを追加して、ボタンの名前を変える
