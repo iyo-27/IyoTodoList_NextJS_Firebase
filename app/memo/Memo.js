@@ -1,40 +1,36 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import TaskDetail from "./TaskDetail";
+import TaskDetail from "./TaskDetail.js";
 import getAllMyData from "../lib/Server";
 
 // 登録されたTODOを表示する関数コンポーネント
 export default function Memo(){
     console.log('Memoまで来てる')
-    const [allmydata, setAllMyData] = useState('登録されたデータが読み込めませんでした。')
-
-    useEffect(() => {
-        //setAllMyData(getAllMyData())
-        
-        console.log('useEffectが走るよ' + allmydata)
-    })
+    const [allmydata, setAllMyData] = useState([])
 
     // Firebaseから未完了データ取得
-    getAllMyData()
-    console.log('getAllMyData走るよ' + allmydata)
+    useEffect(() => {
+        (async function () {
+            const data = await getAllMyData();
+            setAllMyData(data)     
+         })();
+    }, [])
 
-    // 確認用データ
-    //let message = 'テストタスクだよー！！'
-    let key = 1
-    let message = 'test'
+    console.log(allmydata)
 
-    // ここの日付は登録されているものを表示するだけにする
-    let d = new Date()
-    let deadLine = (d.getMonth() + 1) + '/' + d.getDate(); 
-
-    // おそらく検索モード、追加モードでスイッチするようになるため変数にぶち込んでる
-    let data = (
-        <TaskDetail key={key} message={message} deadLine={deadLine}/>
-    )
+    // 取得したデータから登録済みのタスク一覧を生成
+    // おそらく検索モード、追加モードでスイッチするようにするかもしれないから変数にぶち込んでる
+    let taskDetail = []
+    if(allmydata[0] != 'err'){
+        allmydata.forEach((doc) => {
+            console.log('getAllMyData結果：' + doc.id + ' => ' + doc.get('task'));
+            taskDetail.push(<TaskDetail key={doc.id} message={doc.get('task')} deadline={doc.get('deadline')}/>)
+        })
+    }
 
     return (
         <div className='nes-container '>
-          {data}
+          {taskDetail}
         </div>
     )
 
