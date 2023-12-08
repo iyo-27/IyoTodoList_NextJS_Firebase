@@ -5,21 +5,23 @@ import {db} from '../../fire'
 
 const documentName = 'mydata'
 
+// 全ドキュメントをドキュメント登録順に取得
 export async function getAllMyData(){
 
-  const querySnapshot = await getDocs(collection(db, documentName));
+  try {
 
-  if (querySnapshot.size == 0) {
+    const querySnapshot = await getDocs(collection(db, documentName));
 
-    return ['err', '登録されたデータが読み込めませんでした。']
-  
-  }else{
+    return (querySnapshot.size == 0 ? ['err', '登録されたデータが読み込めませんでした。'] : querySnapshot)
 
-    return querySnapshot 
-  
-   }
+  } catch (error) {
+    
+    console.log(`Error: ${JSON.stringify(error)}`)
+
+  }
 }
 
+// 新規タスクの追加
 export async function addTask(taskText, deadline){
 
   console.log('addTask出発 taskText：'+ taskText + ' deadline：' + deadline)

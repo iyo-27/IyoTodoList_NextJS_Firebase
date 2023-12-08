@@ -18,8 +18,6 @@ export default function Memo(){
          })();
     }, [])
 
-    console.log(allmydata)
-
     // 取得したデータから登録済みのタスク一覧を生成
     // おそらく検索モード、追加モードでスイッチするようにするかもしれないから変数にぶち込んでる
     let taskDetail = []
