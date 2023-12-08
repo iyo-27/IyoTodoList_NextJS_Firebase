@@ -1,5 +1,5 @@
 import {getDocs, collection} from 'firebase/firestore'
-import {doc, addDoc, setDoc} from 'firebase/firestore'
+import {doc, addDoc, setDoc, Timestamp} from 'firebase/firestore'
 import {db} from '../../fire'
 
 
@@ -23,12 +23,12 @@ export async function getAllMyData(){
 export async function addTask(taskText, deadline){
 
   console.log('addTask出発 taskText：'+ taskText + ' deadline：' + deadline)
+  console.log('new Data：' + new Date(deadline) + ' TimeStamp：' + Timestamp.fromDate(new Date(deadline)))
 
   try {
     const docData = {
       task: taskText,
-      //deadline: Timestamp.fromDate(deadline),
-      deadline: null,
+      deadline: Timestamp.fromDate(new Date(deadline)),
       deleteflg: false,
       completeflg: false
     }
@@ -36,9 +36,7 @@ export async function addTask(taskText, deadline){
     // ドキュメントの件数の取得
     const snapshot = await getDocs(collection(db, documentName));
 
-    await setDoc(doc(db, documentName, (snapshot.size + 1).toString()), docData);
-    //const docRef = await addDoc(collection(db, documentName), docData);
-    console.log("Document written with ID: ", docRef.id);
+    const docRef = await setDoc(doc(db, documentName, (snapshot.size + 1).toString()), docData);
 
     return docRef
     
