@@ -1,3 +1,20 @@
+#　いよのかわいいタスク管理
+## システム概要
+ Next.js、Firebaseによるかわいいタスク管理
+ ![タスク管理の画面](./img/iyotodo_20231208.png)
+
+## 作成した経緯
+自団体名古屋ゲームミュージックストリングス用にゲームっぽいタスク管理を作ろうと思った。
+
+## TODO
+1. 完了ボタンの機能作成
+2. 削除ボタンの作成
+3. 削除ボタンの機能作成
+4. 削除済みタスクを一覧に出さないようにする
+5. ドロップダウンで完了済みタスクを出すか出さないか選択できるようにする。
+   　→デフォルトは完了済みタスクを出さない
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
